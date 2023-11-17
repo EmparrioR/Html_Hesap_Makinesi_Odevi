@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+
+        .calculator {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 300px;
+        }
+
+        .display {
+            background-color: #eee;
+            padding: 5px;
+
+
+        }
+
+        .keys {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            padding: 15px;
+        }
+
+        .button {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.2em;
+            cursor: pointer;
+            background-color: #ccc;
+        }
+
+        .operator {
+            font-size: 1.2em;
+            grid-column: span 1;
+            background-color: #ff8c00;
+        }
+    </style>
+    <script>
+        function c(val) {
+            document.getElementById("d").value = val;
+        }
+
+        function v(val) {
+            document.getElementById("d").value += val;
+        }
+
+        function e() {
+            try {
+                c(eval(document.getElementById("d").value))
+            } catch (e) {
+                c('Error')
+            }
+        }
+    </script>
+    <title>Calculator</title>
+</head>
+
+<body>
+    <div class="calculator">
+
+        <table>
+            <tr>
+                <td><input type="text" readonly size="23" style="height: 40px; margin-left: 12px;" id="d"></td>
+                <td><input type="button" class="button" style="padding: 8px; margin: 10px;"  value="C" onclick='c("")'></td>
+            </tr>
+        </table>
+
+        <div class="keys">
+            <input type="button" class="button" value="1" onclick='v("1")'>
+            <input type="button" class="button" value="2" onclick='v("2")'>
+            <input type="button" class="button" value="3" onclick='v("3")'>
+            <input type="button" class="operator" value="/" onclick='v("/")'>
+
+            <input type="button" class="button" value="4" onclick='v("4")'>
+            <input type="button" class="button" value="5" onclick='v("5")'>
+            <input type="button" class="button" value="6" onclick='v("6")'>
+            <input type="button" class="operator" value="-" onclick='v("-")'>
+
+            <input type="button" class="button" value="7" onclick='v("7")'>
+            <input type="button" class="button" value="8" onclick='v("8")'>
+            <input type="button" class="button" value="9" onclick='v("9")'>
+            <input type="button" class="operator" value="+" onclick='v("+")'>
+
+            <input type="button" class="button" value="0" onclick='v("0")'>
+            <input type="button" class="button" value="." onclick='v(".")'>
+            <input type="button" class="operator" value="=" onclick='e()'>
+            <input type="button" class="operator" value="*" onclick='v("*")'>
+
+        </div>
+    </div>
+</body>
+
+</html>
